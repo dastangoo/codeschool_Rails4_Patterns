@@ -1,7 +1,17 @@
 class ItemSerializer < ActiveModel::Serializer
-  attributes :id, :name, :url
+  attributes :id, :name, :price
   
-  def url
-    item_url(object)
+  # has_many :comments
+
+  # def comments
+  #   object.comments.approved
+  # end
+  
+  def arttibutes
+    data = super
+    if current_user.premium_account?
+      data[:discounted_price] = object.discounted_price
+    end
+    data
   end
 end
