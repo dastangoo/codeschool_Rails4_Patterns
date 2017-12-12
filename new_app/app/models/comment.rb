@@ -1,4 +1,3 @@
 class Comment < ApplicationRecord
-  blongs_to :post
-  scope :approved, -> { where(approved: true) }
+  belongs_to :commentable, polymorphic: true
 end

@@ -1,3 +1,13 @@
+<% if @post_decorator.is_front_page? %>
+  <%= image_tag(@post_decorator.image) %>
+<% end %>
+
+
+<article class="<%= @post_decorator.classes(@post) %>">
+  <%= @post_decorator.content %>
+</article>
+<span><%= @post_decorator.publication_date @post %></span>
+  <%= @post.content %>
 <p id="notice"><%= notice %></p>
 
 <p>

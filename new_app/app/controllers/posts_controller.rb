@@ -12,6 +12,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @post = Post.find(params[:id])
+    @post_decorator = PostDecorator.new(post)
   end
 
   # GET /posts/new
