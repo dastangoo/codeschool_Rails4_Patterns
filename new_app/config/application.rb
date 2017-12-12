@@ -2,6 +2,8 @@ require_relative 'boot'
 
 require 'rails/all'
 
+
+config.filter_parameters += [:password, :ssn]
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
