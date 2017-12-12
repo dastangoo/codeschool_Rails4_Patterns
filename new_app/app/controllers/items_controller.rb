@@ -5,6 +5,23 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    
+    respond_to do |format|
+      format.html
+      # format.json {
+      #   render json: @items,
+      #     except: [:created_at, :updated_at],
+      #     include: { comments: { only: :id }}
+      # }
+      # format.json { render json: @items }
+      # format.json { render json: @items, serializer: SomeOtherSerializer }
+      format.json { render json: @items, serializer: ItemsCollectionSerializer }
+    end
+  end
+  
+  def index
+    @items = Item.all
+    repond_with @items 
   end
 
   # GET /items/1
