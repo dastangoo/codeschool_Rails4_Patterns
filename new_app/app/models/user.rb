@@ -37,6 +37,12 @@ class User < ApplicationRecord
     redirect_to @user, notice: 'Successfully suspended.'
   end
   
+  scope :active, -> { where(state: 'active') }
+  scope :inactive, -> { where(state: 'inactive') }
+  
+  # In Rails 3 query in the last scope overrides the first one
+  # In Rails 4 appends the condition and if you want to do like Rails 3, you need to use merge: User.active.merge(User.inactive)
+  
   protected
   
     # def set_token
